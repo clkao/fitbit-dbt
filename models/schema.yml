@@ -1,0 +1,11 @@
+sources:
+  - name: sleep
+    tables:
+      - name: sleep_log
+        meta:
+          external_location: "read_json('{{env_var('FITBIT_DIR')}}/Sleep/sleep*.json', columns={'dateOfSleep': 'DATE', 'levels': 'JSON', 'mainSleep': 'BOOL', 'startTime': 'DATETIME', 'endTime': 'DATETIME', 'logType': 'VARCHAR'}, format='array')"
+
+          formatter: oldstyle
+      - name: sleep_score
+        meta:
+          external_location: "read_csv('{{env_var('FITBIT_DIR')}}/Sleep/sleep_score.csv',AUTO_DETECT=TRUE)"

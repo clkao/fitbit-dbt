@@ -1,0 +1,11 @@
+fitbit:
+  outputs:
+    dev:
+      type: duckdb
+      path: tmp/duckdb.db
+      extensions:
+        - httpfs
+        - parquet
+
+  target: dev
+
